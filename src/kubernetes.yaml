@@ -1,0 +1,32 @@
+## kubernetes.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: community-site
+spec:
+  selector:
+    app: community-site
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: community-site
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: community-site
+  template:
+    metadata:
+      labels:
+        app: community-site
+    spec:
+      containers:
+        - name: community-site
+          image: community-site:latest
+          ports:
+            - containerPort: 8000

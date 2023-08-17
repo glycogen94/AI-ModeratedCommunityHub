@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant User as U
+    participant Community as C
+    participant Discussion as D
+    participant Comment as Co
+    participant Report as R
+    participant Moderation as M
+    U->>U: Register or login
+    U->>C: Create a community
+    C->>D: Create a discussion
+    U->>D: Create a comment
+    U->>R: Report a comment
+    R->>M: Review the report
+    M->>M: Approve or reject the report
+    M->>Co: Resolve the report
